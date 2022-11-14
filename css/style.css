@@ -1,0 +1,45 @@
+* {
+	box-sizing: border-box;
+}
+.form {
+	background-color: #eee;
+	margin: 50px auto;
+	padding: 20px;
+	width: fit-content;
+}
+.form .input {
+	border-radius: 4px;
+	border: none;
+	outline: none;
+	padding: 10px 5px;
+	width: 300px;
+}
+.form .add {
+	background-color: orange;
+	border: none;
+	border-radius: 4px;
+	padding: 10px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.tasks {
+	background-color: #eee;
+	padding: 10px;
+	margin: auto;
+	width: 419px;
+}
+
+.task {
+	background-color: white;
+	padding: 10px;
+	margin-bottom: 5px;
+}
+.task span {
+	background-color: red;
+	font-size: 12px;
+	padding: 4px;
+	border-radius: 4px;
+	float: right;
+	cursor: pointer;
+}
