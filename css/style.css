@@ -3,7 +3,7 @@
 }
 .form {
 	background-color: #eee;
-	margin: 50px auto;
+	margin: 50px auto 30px;
 	padding: 20px;
 	width: fit-content;
 }
@@ -28,6 +28,8 @@
 	padding: 10px;
 	margin: auto;
 	width: 419px;
+	height: 445px;
+	overflow: auto;
 }
 
 .task {
@@ -42,4 +44,12 @@
 	border-radius: 4px;
 	float: right;
 	cursor: pointer;
+}
+@media (max-width: 767px) {
+	.form .input {
+		width: 239px;
+	}
+	.tasks {
+		width: 360px;
+	}
 }

@@ -1,60 +1,52 @@
 let input = document.querySelector('.input');
 let btn = document.querySelector('.add');
 let tasks = document.querySelector('.tasks');
+let task = document.querySelector('.task');
 
-let task = document.createElement('div');
-let span = document.createElement('span');
-span.append('Delete');
-task.className = 'task';
+getFromLocalStorage();
 
-for (let i = 0; i <= window.localStorage.length; i++) {
-	if (window.localStorage.key(i)) {
-		getFromLocal(i);
+btn.onclick = () => {
+	if (input.value !== '') {
+		addTask();
+		addInLocalStorage();
+		input.value = '';
+		input.style.border = 'none';
 	} else {
-		console.log('No');
+		input.style.border = '1px solid red';
+		console.log('No Message here');
 	}
+};
+function addInLocalStorage() {
+	window.localStorage.setItem(input.value, input.value);
 }
-let tasksList = document.querySelectorAll('.task');
-
-function getFromLocal(i) {
-	let task = document.createElement('div');
-	let span = document.createElement('span');
-	span.append('Delete');
-	task.className = 'task';
-	task.append(span);
-	task.append(window.localStorage.key(i));
-	tasks.appendChild(task);
+function getFromLocalStorage() {
+	for(let i=0;i< window.localStorage.length;i++) {
+		let task = document.createElement('div');
+		let span = document.createElement('span');
+		let txt = document.createTextNode(window.localStorage.key(i));
+		span.append('Delete');
+		task.className = 'task';
+		task.append(span);
+		task.append(txt);
+		tasks.appendChild(task);
+		span.onclick = () => {
+			task.remove();
+			removeFromLocal();
+			localStorage.removeItem(window.localStorage.key(i));
+		};
+	}
 }
 
 function addTask() {
 	let task = document.createElement('div');
 	let span = document.createElement('span');
-	let txt = document.createTextNode(`${input.value}`);
+	let txt = document.createTextNode(input.value);
 	span.append('Delete');
 	task.className = 'task';
 	task.append(span);
 	task.append(txt);
 	tasks.appendChild(task);
-}
-
-btn.onclick = function () {
-	if (input.value !== '') {
-		addTask();
-		addInLocalStorage();
-		input.value = '';
-	} else {
-		console.log('No Message here');
-	}
-};
-
-let i = 1;
-function addInLocalStorage() {
-	window.localStorage.setItem(input.value, input.value);
-}
-
-tasksList.forEach((t) => {
-	t.onclick = () => {
-		window.localStorage.removeItem(t.lastChild);
-		tasks.removeChild(t);
+	span.onclick = () => {
+		task.remove();
 	};
-});
+}
